@@ -8,6 +8,8 @@ const controller = require('../controllers/user.js');
 router.get('/profile', controller.getUserProfile);
 
 
+// Роут на register
+router.post('/registration', controller.register);
 
 
 

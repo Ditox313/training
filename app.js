@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const path = require('path');
 const DB_LINK = require('./config/dbLink');
 
 
@@ -14,14 +15,16 @@ const userRoutes = require('./routes/user.js');
 
 // Запускаем приложение
 const app = express();
+
+// Регистрируем модуль bodyParser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Подключаем базу
 DB_LINK.start();
 
 
 
-
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cors());
 app.use('/api/user', userRoutes);
