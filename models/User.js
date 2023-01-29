@@ -22,9 +22,11 @@ const userSchema = new Schema({
     },
 
     images: {
-        before: String,
-        after: String,
-    }
+        type: Array,
+    } ,
+
+
+
 
 }, { timestamps: true, minimize: false, });
 
